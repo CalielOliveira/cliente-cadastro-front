@@ -1,0 +1,28 @@
+mat-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .telefone-list {
+    display: flex;
+    align-items: center;
+  }
+  
+  .telefone-list mat-form-field {
+    flex: 1;
+  }
+  
+  .form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .mat-label {
+    display: block;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
