@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private clientes: Cliente[] = [];
+  private apiUrl = 'http://localhost:8080/api/v1/clientes';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  adicionarCliente(cliente: Cliente): void {
-    this.clientes.push(cliente);
+  private createAuthHeader(): HttpHeaders {
+    const username = 'fulano';
+    const password = 'senhaDoFulano';
+    const basicAuth = 'Basic ' + btoa(`${username}:${password}`);
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': basicAuth
+    });
   }
 
-  obterClientes(): Cliente[] {
-    return this.clientes;
-  }
-
-  clienteExiste(nome: string): boolean {
-    return this.clientes.some(c => c.nome === nome);
-  }
-
-  telefoneExiste(numero: string): boolean {
-    return this.clientes.some(c => c.telefones.some(t => t.numero === numero));
+  adicionarCliente(cliente: Cliente): Observable<Cliente> {
+    const headers = this.createAuthHeader();
+    return this.http.post<Cliente>(`${this.apiUrl}/create`, cliente, { headers });
   }
 }

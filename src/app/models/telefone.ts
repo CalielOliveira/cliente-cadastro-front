@@ -1,4 +1,3 @@
 export class Telefone {
-    numero: string = '';
-  }
-  
+  numero: string = '';
+}

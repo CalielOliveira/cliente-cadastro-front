@@ -1,37 +1,36 @@
 <mat-card>
-    <form (ngSubmit)="onSubmit()" #clienteForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #clienteForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="cliente.nome" required minlength="10">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input matInput type="text" id="endereco" name="endereco" [(ngModel)]="cliente.endereco">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bairro</mat-label>
+      <input matInput type="text" id="bairro" name="bairro" [(ngModel)]="cliente.bairro">
+    </mat-form-field>
+
+    <div>
+      <mat-label>Telefones</mat-label>
+    </div>
+    <div *ngFor="let telefone of cliente.telefones; let i = index" class="telefone-list">
       <mat-form-field appearance="fill">
-        <mat-label>Nome</mat-label>
-        <input matInput type="text" id="nome" name="nome" [(ngModel)]="cliente.nome" required minlength="10">
+        <mat-label>Telefone {{i + 1}}</mat-label>
+        <input matInput type="text" [(ngModel)]="telefone.numero" name="telefone{{i}}" required>
+        <button mat-icon-button color="warn" type="button" (click)="removeTelefone(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Endereço</mat-label>
-        <input matInput type="text" id="endereco" name="endereco" [(ngModel)]="cliente.endereco">
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Bairro</mat-label>
-        <input matInput type="text" id="bairro" name="bairro" [(ngModel)]="cliente.bairro">
-      </mat-form-field>
-  
-      <div>
-        <mat-label>Telefones</mat-label>
-      </div>
-      <div *ngFor="let telefone of cliente.telefones; let i = index" class="telefone-list">
-        <mat-form-field appearance="fill">
-          <mat-label>Telefone {{i + 1}}</mat-label>
-          <input matInput type="text" [(ngModel)]="telefone.numero" name="telefone{{i}}" required>
-          <button mat-icon-button color="warn" type="button" (click)="removeTelefone(i)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-      <button mat-raised-button color="primary" type="button" (click)="addTelefone()">Adicionar Telefone</button>
-  
-      <div class="form-buttons">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!clienteForm.form.valid">Salvar</button>
-      </div>
-    </form>
-  </mat-card>
-  
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="addTelefone()">Adicionar Telefone</button>
+
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!clienteForm.form.valid">Salvar</button>
+    </div>
+  </form>
+</mat-card>

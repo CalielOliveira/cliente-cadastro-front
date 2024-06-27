@@ -1,28 +1,40 @@
 mat-card {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
-  .telefone-list {
-    display: flex;
-    align-items: center;
-  }
-  
-  .telefone-list mat-form-field {
-    flex: 1;
-  }
-  
-  .form-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .mat-label {
-    display: block;
-    margin-top: 16px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.telefone-list {
+  display: flex;
+  align-items: center;
+}
+
+.telefone-list mat-form-field {
+  flex: 1;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-snackbar {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.success-snackbar {
+  background-color: #4caf50;
+  color: #fff;
+}
